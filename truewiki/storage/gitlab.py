@@ -123,6 +123,7 @@ class Storage(GitStorage):
     "--storage-gitlab-url",
     help="Repository URL on GitLab.",
     default=None,
+    required=True,
     show_default=True,
     metavar="URL",
 )
