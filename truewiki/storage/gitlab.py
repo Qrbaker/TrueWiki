@@ -122,7 +122,7 @@ class Storage(GitStorage):
 @click.option(
     "--storage-gitlab-url",
     help="Repository URL on GitLab.",
-    default="https://github.com/TrueBrain/wiki-example",
+    default=None,
     show_default=True,
     metavar="URL",
 )
