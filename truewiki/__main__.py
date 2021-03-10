@@ -17,8 +17,10 @@ from . import (
 from .metadata import click_metadata
 from .storage.git import click_storage_git
 from .storage.github import click_storage_github
+from .storage.gitlab import click_storage_gitlab
 from .storage.local import click_storage_local
 from .user.github import click_user_github
+from .user.gitlab import click_user_gitlab
 from .user_session import (
     click_user_session,
     get_user_by_bearer,
@@ -93,7 +95,7 @@ async def wait_for_storage():
 @click.option("--port", help="Port of the web server", default=80, show_default=True)
 @click.option(
     "--storage",
-    type=click.Choice(["github", "git", "local"], case_sensitive=False),
+    type=click.Choice(["github", "gitlab", "git", "local"], case_sensitive=False),
     required=True,
     callback=click_helper.import_module("truewiki.storage", "Storage"),
 )
@@ -102,8 +104,10 @@ async def wait_for_storage():
 @click_storage_local
 @click_storage_git
 @click_storage_github
+@click_storage_gitlab
 @click_user_session
 @click_user_github
+@click_user_gitlab
 @click_page
 @click_sitemap
 @click.option("--validate-all", help="Validate all mediawiki files and report all errors", is_flag=True)
